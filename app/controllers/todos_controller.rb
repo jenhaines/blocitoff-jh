@@ -18,6 +18,10 @@ class TodosController < ApplicationController
 		@todo = Todo.find params[:id]
 	end
 
+	def index
+		@todo = Todo.new
+	end
+
 
 	private
  

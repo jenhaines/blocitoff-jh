@@ -54,4 +54,8 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'figaro', '1.0'
 gem 'pry'
+gem 'better_errors'
+gem 'binding_of_caller'
+gem 'bootstrap-sass', '~> 3.1.1'
+gem 'faker'
 
