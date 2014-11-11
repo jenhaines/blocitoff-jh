@@ -1,29 +1,26 @@
 require 'rails_helper'
 
-feature 'PM creates multiple ToDos' do
-  scenario 'Successfully' do
-    sign_in
-    fill_in 'Description', with: 'Meet up with the team'
-    click_button 'Save'
-    fill_in 'Description', with: 'Have lunch with the Hip Priest'
-    click_button 'Save'
-    expect( page ).to have_field('Description')
+feature 'Logged in user views Todo list' do
+
+  before do
+    @user = create(:user)  
+    4.times { create(:todo, user: @user)}
   end
 
-  # scenario "Without a description" do
-  #   sign_in
-  #   click_button 'Save'
-  #   expect( page ).to have_content('Please fill in the todo description')
-  # end
+  scenario 'with Todos' do
+    sign_in
+    visit todos_path
+    expect( page ).to have_selector('div.line-items')
+  end
 
-  # scenario "Without signing in" do
-  #   visit new_todo_path
-  #   expect( page ).to have_no_field('Description')
-  # end
+  scenario "without Todos" do
+    sign_in
+    @user.todos.destroy!
+    expect( page ).to have_no_selector('div.line-items')
+  end
 
 
   def sign_in
-    @user = create(:user)
     visit new_user_session_path
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password

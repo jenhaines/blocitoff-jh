@@ -21,6 +21,8 @@ class TodosController < ApplicationController
 	end
 
 	def index
+		@user = current_user
+		@todos = @user.todos
 	end
 
 

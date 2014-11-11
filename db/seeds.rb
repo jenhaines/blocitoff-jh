@@ -22,15 +22,15 @@ users = User.all
 # The `save` method then saves this User to the database.
 
 
-# # Create Todos
-# 50.times do
-#   Todo.create!(
-#     user:   users.sample,
-#     description:  Faker::Lorem.sentence,
-#     created_at: Faker::Date.backward(14)
-#     # body:   Faker::Lorem.paragraph
-#   )
-# end
+# Create Todos
+50.times do
+  Todo.create!(
+    user:   users.sample,
+    description:  Faker::Lorem.sentence,
+    created_at: Faker::Date.backward(14)
+    # body:   Faker::Lorem.paragraph
+  )
+end
 
 # Create an admin user
 admin = User.new(
@@ -44,4 +44,4 @@ admin.save
 
 puts "Seed finished"
 puts "#{User.count} users created"
-# puts "#{Todo.count} todos created"
+puts "#{Todo.count} todos created"
