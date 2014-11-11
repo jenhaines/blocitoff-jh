@@ -19,7 +19,7 @@ feature 'Visitor does not sign in' do
     fill_in 'Email', with: 'papa@invalid.com'
     fill_in 'Password', with: user.password
     click_button 'Log in'
-    find_link('Sign In').visible?
+    expect( page ).to have_content('Invalid email or password')
   end
 
   scenario 'with blank password' do
@@ -27,6 +27,6 @@ feature 'Visitor does not sign in' do
     visit new_user_session_path
     fill_in 'Email', with: user.email
     click_button 'Log in'
-    find_link('Sign In').visible?
+    expect( page ).to have_content('Invalid email or password')
   end
 end

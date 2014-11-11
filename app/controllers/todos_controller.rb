@@ -1,5 +1,7 @@
 class TodosController < ApplicationController
 
+	before_action :authenticate_user!
+	
 	def new
 		@todo = Todo.new
 	end
@@ -7,7 +9,7 @@ class TodosController < ApplicationController
 	def create
 		@todo = Todo.new(todo_params)
 		if @todo.save
-			redirect_to @todo, notice: 'Your new TODO was saved'
+			redirect_to todos_path, notice: 'Your new TODO was saved'
 		else
 			flash[:error] = 'Please fill in the todo description'
 			render :new
@@ -19,7 +21,6 @@ class TodosController < ApplicationController
 	end
 
 	def index
-		@todo = Todo.new
 	end
 
 
