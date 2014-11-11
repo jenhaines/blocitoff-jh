@@ -1,26 +1,24 @@
-<div class = 'container'>
   <div class="row">
-    <div class = 'col-md-10'>
+    <div class = 'col-md-12'>
       <H1 class = "logo"><%= current_user.name %>'s To Do List</H1>
-      </br>
-      <%= render 'form' %>
-      </br>
-      <table class="table table-striped">
-        <tr>
-        <td><b>Description</b></td>
-        <td><b>Days Left</b></td>
-        <td align="center"><b>Complete</b></td>
-        </tr>
+        </br>
+        <%= render 'form' %>
+        </br>
+        <table class="table table-striped">
+          <tr>
+            <td><b>Description</b></td>
+            <td><b>Days Left</b></td>
+            <td align="center"><b>Complete</b></td>
+          </tr>
           <% @todos.each do |t| %>
             <div class="line-items">
-            <tr>
+              <tr>
               <td><%= t.description %></td>
               <td><%= distance_of_time_in_words_to_now(t.created_at) %></td>
               <td align="center"><input type="checkbox"></td>
               </tr>
-              </div>
+            </div>
           <% end %>
-      </table>
-    </div>
+        </table>
     </div>
   </div>
