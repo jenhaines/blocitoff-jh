@@ -11,8 +11,8 @@ class TodosController < ApplicationController
 		if @todo.save
 			redirect_to todos_path, notice: 'Your new TODO was saved'
 		else
-			flash[:error] = 'Please fill in the todo description'
-			render :new
+			# flash[:error] = 'Please fill in the todo description'
+			redirect_to todos_path
 		end
 	end
 
