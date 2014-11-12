@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112055343) do
+ActiveRecord::Schema.define(version: 20141112171117) do
 
   create_table "todos", force: true do |t|
     t.string   "description"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20141112055343) do
     t.boolean  "complete"
   end
 
+  add_index "todos", ["complete"], name: "index_todos_on_complete"
   add_index "todos", ["user_id"], name: "index_todos_on_user_id"
 
   create_table "users", force: true do |t|
