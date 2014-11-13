@@ -21,8 +21,9 @@ class TodosController < ApplicationController
 	end
 
 	def index
-		@user = current_user
-		@todos = @user.todos
+		# @user = current_user
+		# @todos = @user.todos.where(:complete => false)
+		@todos = current_user.todos
 	end
 
 

@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  get 'home/index'
-
   get 'home/about'
 
   devise_for :users
-  resources :todos, only: [:new, :create, :show, :index]
+  resources :todos, only: [:new, :create, :index]
 
   root to: 'home#index'
   
