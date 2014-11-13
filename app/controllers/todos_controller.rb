@@ -21,11 +21,20 @@ class TodosController < ApplicationController
 	end
 
 	def index
-		# @user = current_user
-		# @todos = @user.todos.where(:complete => false)
-		@todos = current_user.todos
+		@todos = current_user.todos.where(:complete => false)
 	end
 
+	def complete
+		  @todos = current_user.todos
+	    params[:todos_checkbox].each do |check|
+	       todo_id = check
+	       t = Todo.find_by_id(todo_id)
+	         t.complete = true
+	         t.save
+	     	end
+	     	# render 'index'
+	     	redirect_to :action => 'index'
+	 end
 
 	private
  

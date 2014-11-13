@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :todos, only: [:new, :create, :index]
 
+  match 'todos/complete' => 'todos#complete', :via => :post
+
   root to: 'home#index'
   
   # The priority is based upon order of creation: first created -> highest priority.

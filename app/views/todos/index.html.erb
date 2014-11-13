@@ -4,6 +4,7 @@
   <div class = 'col-md-10'>
     <%= render 'form' %>
     </br>
+      <%= form_tag("/todos/complete/", :method => "post") do %>
     <table class="table table-striped">
       <tr>
       <td><b>Description</b></td>
@@ -15,11 +16,13 @@
           <tr>
           <td><%= t.description %></td>
           <td><%= distance_of_time_in_words_to_now(t.created_at) %></td>
-          <td align="center"><input type="checkbox" name="complete"></td>
+          <td align="center"><%= check_box_tag  "todos_checkbox[]",t.id %></td>
           </tr>
         </div>
       <% end %>
     </table>
+    <%= submit_tag("Complete Todos", :class=>"btn btn-primary") %>
+    <% end %>
   </div>
 </div>
 </div>
