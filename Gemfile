@@ -58,4 +58,5 @@ gem 'better_errors'
 gem 'binding_of_caller'
 gem 'bootstrap-sass', '~> 3.1.1'
 gem 'faker'
+gem 'whenever', :require => false
 
