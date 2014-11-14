@@ -11,7 +11,7 @@ class TodosController < ApplicationController
 		if @todo.save
 			redirect_to todos_path, notice: 'Your new TODO was saved'
 		else
-			# flash[:error] = 'Please fill in the todo description'
+			flash[:error] = 'Please fill in the todo description'
 			redirect_to todos_path
 		end
 	end
@@ -21,7 +21,7 @@ class TodosController < ApplicationController
 	end
 
 	def index
-		@todos = current_user.todos.where(:complete => false)
+		  @todos = current_user.todos
 	end
 
 	def complete
@@ -32,8 +32,7 @@ class TodosController < ApplicationController
 	         t.complete = true
 	         t.save
 	     	end
-	     	# render 'index'
-	     	redirect_to :action => 'index'
+	     	render 'index'
 	 end
 
 	private
