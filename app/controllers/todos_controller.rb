@@ -25,15 +25,20 @@ class TodosController < ApplicationController
 	end
 
 	def complete
-		  @todos = current_user.todos
-	    params[:todos_checkbox].each do |check|
-	       todo_id = check
-	       t = Todo.find_by_id(todo_id)
-	         t.complete = true
-	         t.save
-	     	end
-	     	render 'index'
-	 end
+		@todos = current_user.todos
+		if params.has_key?(:todos_checkbox)
+			params[:todos_checkbox].each do |check|
+				todo_id = check
+				t = Todo.find_by_id(todo_id)
+				t.complete = true
+				t.save
+			end
+			render 'index'
+		else
+			flash[:error] = 'Please select a todo'
+			redirect_to todos_path 	
+		end
+	end
 
 	private
  
