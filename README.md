@@ -8,4 +8,4 @@
 
 * Automatic removal of To-do's over 1 week old.
 
-[Visit Blocitoff!](blocitoff-jh.herokuapp.com).
+[Visit Blocitoff!](https://blocitoff-jh.herokuapp.com/).
